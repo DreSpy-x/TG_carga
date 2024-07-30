@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audio Analyzer</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Upload and Analyze Audio File</h1>
+    <input type="file" id="audioFile" accept="audio/wav">
+    <button onclick="uploadAudio()">Upload</button>
+    <br><br>
+    <audio id="audioPlayer" controls style="display: none;"></audio>
+    <div id="oscilogram"></div>
+    <div id="spectrogram"></div>
+    <script src="../static/script.js" defer></script>
+</body>
+</html>
