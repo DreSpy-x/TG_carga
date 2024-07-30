@@ -12,9 +12,6 @@ function uploadAudio() {
         body: formData,
     }).then(response => response.json())
       .then(data => {
-          if (data.error) {
-              throw new Error(data.error);
-          }
           globalData = data;  // Almacenar datos globalmente
           plotCompleteOscilogram(data.times, data.oscilogram);
           plotCompleteSpectrogram(data.time_bins, data.frequencies, data.spectrogram);
@@ -40,7 +37,6 @@ function setupAudioPlayer(file) {
     };
     player.ontimeupdate = () => updateGraphs(player);
 }
-
 function plotCompleteOscilogram(times, oscilogram) {
     const trace = {
         x: times,
@@ -67,7 +63,7 @@ function plotCompleteSpectrogram(time_bins, frequencies, spectrogram) {
     const layout = {
         title: 'Spectrogram',
         xaxis: { title: 'Time (s)' },
-        yaxis: { title: 'Frequency (Hz)', autorange: false, range: [100, 4000] },
+        yaxis: { title: 'Frequency (Hz)', autorange: false, range: [100, 4000]},
         aspectratio: {x: 1, y: 1}
     };
     Plotly.newPlot('spectrogram', [data], layout);
